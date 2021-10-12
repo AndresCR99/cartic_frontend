@@ -10,7 +10,7 @@ import Login from "../pages/Login";
 const App = () => (
 
     <BrowserRouter>
-        <Header/>
+        {window.location.pathname !== "/" && <Header/>}
         <Switch>
             <Route exact path="/" component={Login} />
             <Route exact path="/tecnico" component={Tecnico} />

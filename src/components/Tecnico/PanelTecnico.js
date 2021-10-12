@@ -25,7 +25,6 @@ const PanelTecnico = () => {
                                 <Select
                                     options={options}
                                 />
-
                             </Col>
                         </Form.Group>
 

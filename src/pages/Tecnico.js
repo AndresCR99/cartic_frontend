@@ -1,10 +1,10 @@
-import React, { Fragment} from "react";
+import React, {Fragment} from "react";
 import { Container } from "react-bootstrap";
 
 import PanelTecnico from "../components/Tecnico/PanelTecnico";
 
 
-const Servicios = () => {
+const Tecnico = () => {
 
     return(
 
@@ -16,4 +16,4 @@ const Servicios = () => {
     )
 }
 
-export default Servicios;
+export default Tecnico;

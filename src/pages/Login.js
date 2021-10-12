@@ -8,7 +8,7 @@ const Login = () => {
         <Container>
             <Row>
                 <Col md={{ span: 4, offset: 4 }}>
-                    <Card className="shadow">
+                    <Card className="shadow mt-5 mb-5">
                         <Card.Header className="text-center text-yellow bg-blue">
                             Cartic
                         </Card.Header>
