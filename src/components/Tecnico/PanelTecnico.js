@@ -13,15 +13,15 @@ const PanelTecnico = () => {
     return(
 
         <div className="row mt-5">
-            <div className="col-sm-10 offset-sm-1">
+            <div className="col-xs-12 col-md-10 offset-md-1">
                 <h1>Histórico Técnico</h1>
                 <div className="card shadow mt-3">
                     <div className="card-body">
 
                     <Form>
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-                            <Form.Label column sm="2">Técnico</Form.Label>
-                            <Col sm="10">
+                            <Form.Label column  lg="2">Técnico</Form.Label>
+                            <Col lg="10">
                                 <Select
                                     options={options}
                                 />
@@ -29,17 +29,17 @@ const PanelTecnico = () => {
                         </Form.Group>
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                            <Form.Label column sm="2">
+                            <Form.Label column lg="2">
                             Total servicios
                             </Form.Label>
-                            <Col sm="10">
+                            <Col lg="10">
                                 <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" style={{height: "35px"}} />
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                            <Form.Label column sm="2">Ganancia total</Form.Label>
-                            <Col sm="10">
+                            <Form.Label column lg="2">Ganancia total</Form.Label>
+                            <Col lg="10">
                                 <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" style={{height: "35px"}} />
                             </Col>
                         </Form.Group>

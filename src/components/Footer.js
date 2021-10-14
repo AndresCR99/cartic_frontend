@@ -10,7 +10,7 @@ const Footer = () => {
         <br />
         <div className="fixed-bottom mt-5 bg-blue">
             <div className="mt-2 mb-2">
-                <div align="center" className="text-warning">
+                <div align="center" className="text-warning small">
                     Copyright &copy;  Cartic - (Colombia). <br />
                         Cartic@gmail.com <br />
                     <strong>

@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import { Container } from "react-bootstrap";
 
 import PanelTecnico from "../components/Tecnico/PanelTecnico";
+import TablaTecnico from "../components/Tecnico/TablaTecnico";
 
 
 const Tecnico = () => {
@@ -9,8 +10,9 @@ const Tecnico = () => {
     return(
 
         <Fragment>
-            <Container>
+            <Container >
                 <PanelTecnico/>
+                <TablaTecnico/>
             </Container>
         </Fragment>
     )
