@@ -6,6 +6,9 @@ import E404 from "../pages/errors/E404";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Login from "../pages/Login";
+import Registro from "../pages/Registro";
+import Servicio from "../pages/Servicio";
+
 
 const App = () => (
 
@@ -14,6 +17,8 @@ const App = () => (
         <Switch>
             <Route exact path="/" component={Login} />
             <Route exact path="/tecnico" component={Tecnico} />
+            <Route exact path="/servicio" component={Servicio} />
+            <Route exact path="/registro" component={Registro} />
             <Route component={E404} />
         </Switch>
         <Footer/>
