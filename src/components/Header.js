@@ -12,7 +12,10 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav bg-blue">
                 
                 <Nav className=" bg-blue">
-                    <Nav.Link as={NavLink} to={'/registro'} className="text-yellow">Nuevo</Nav.Link>
+                    <NavDropdown title={<span className="text-yellow bg-blue">Registro</span>} id="basic-nav-dropdown"  className="text-yellow bg-blue">
+                    <NavDropdown.Item as={NavLink} to={'/Registro'}  className="text-yellow">Cliente</NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to={'/RegistroVehiculo'}  className="text-yellow">Vehiculo</NavDropdown.Item>
+                    </NavDropdown>
                     <Nav.Link as={NavLink} to={'/servicio'} className="text-yellow">Servicio</Nav.Link>
                     <NavDropdown title={<span className="text-yellow bg-blue">Historicos</span>} id="basic-nav-dropdown"  className="text-yellow bg-blue">
                     <NavDropdown.Item href="#action/3.1"  className="text-yellow">Vehiculo</NavDropdown.Item>
