@@ -1,15 +1,13 @@
 import React, {Fragment} from "react";
 import { Container } from "react-bootstrap";
-import RegistroCliente from "../components/Registro/RegistroCliente";
-
+import RegistroVehiculo from "../components/Registro/RegistroVehiculo"
 
 const Registro = () => {
     return (
-            <Container>
-                <RegistroCliente/>
+        <Container>
+                <RegistroVehiculo/>
             </Container>
-
     )
 }
 
-export default Registro
+export default Registro;
