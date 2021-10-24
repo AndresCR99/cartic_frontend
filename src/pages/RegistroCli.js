@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import RegistroCliente from "../components/Registro/RegistroCliente";
 
 
-const Registro = () => {
+const RegistroCli = () => {
     return (
             <Container>
                 <RegistroCliente/>
@@ -12,4 +12,4 @@ const Registro = () => {
     )
 }
 
-export default Registro
+export default RegistroCli
