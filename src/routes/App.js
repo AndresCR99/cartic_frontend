@@ -15,6 +15,8 @@ import { store } from '../store';
 import { comprobarToken } from '../connection/helpers/comprobarToken';
 import { Navegacion } from "../layouts/Navegacion";
 import { Container } from "react-bootstrap";
+import RutaPrivada from "./RutaPrivada";
+
 
 
 comprobarToken();
@@ -29,17 +31,17 @@ function App() {
             </div>
             <Container>
                 <Switch>
-                    <Route exact path="/" component={Servicio} />
                     <Route exact path="/login" component={Signin} />
-                    <Route exact path="/registro" component={Signup} />
-                    <Route exact path="/tecnico" component={Tecnico} />
-                    <Route exact path="/RegistroCli" component={RegistroCli} />
-                    <Route exact path="/RegistroVehiculo" component={RegistroVehiculo} />
+                    <Route exact path="/registro" component={Signup} /> 
+                    <RutaPrivada exact path="/RegistroCliente" component={RegistroCli}></RutaPrivada>
+                    <RutaPrivada exact path="/RegistroVehiculo" component={RegistroVehiculo}></RutaPrivada>
+                    <RutaPrivada exact path="/" component={Servicio}></RutaPrivada>
+                    <RutaPrivada exact path="/tecnico" component={Tecnico}></RutaPrivada>
                     <Route component={E404} />
                 </Switch>
-                
+                <Footer/>
             </Container>
-            <Footer/>
+            
         </BrowserRouter>
     </Provider>
     );

@@ -19,7 +19,7 @@ function SigninForm ({errores, enviarCallback}){
                     <Image src={logo} height={100} />
                 </div>
                     <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
-                        <Form.Label>Correo electrónico</Form.Label>
+                        <Form.Label>Usuario</Form.Label>
                         <Form.Control 
                         type="text" 
                         placeholder="Ingrese un usuario" 
