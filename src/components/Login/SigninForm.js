@@ -1,32 +1,31 @@
 import React, { useState } from 'react'
 import logo from "../../images/logo.png";
 import { Form, Card, Image, Button } from "react-bootstrap";
-import { login } from '../../api/api';
 
-const LoginForm = () =>{
+
+function SigninForm ({errores, enviarCallback}){
 
     const[userName, setUserName]=useState("");
     const [password, setPassword]= useState("");
 
-    const enviarLogin = (e) => {
+    const enviarFormulario = (e)=>{
         e.preventDefault();
-        console.log(userName, password)
-        login(userName, password);
-        
+        enviarCallback({userName, password});
     }
     return (
-        <Form onSubmit={enviarLogin} >
+        <Form onSubmit={enviarFormulario} >
             <Card.Body>
                 <div className="text-center mt-2">
                     <Image src={logo} height={100} />
                 </div>
                     <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
-                        <Form.Label>Correo electrónico</Form.Label>
+                        <Form.Label>Usuario</Form.Label>
                         <Form.Control 
                         type="text" 
                         placeholder="Ingrese un usuario" 
                         value={userName}
                         onChange={e=>setUserName(e.target.value)}
+                        isInvalid={errores.userName}
                         />
                         <Form.Text className="text-muted">
                         Nunca compartas tus credenciales con nadie.
@@ -40,6 +39,7 @@ const LoginForm = () =>{
                         placeholder="Ingrese de nuevo la contraseña" 
                         value={password}
                         onChange={e=>setPassword(e.target.value)}
+                        isInvalid={errores.password}
                         />
                     </Form.Group>
             </Card.Body>
@@ -52,4 +52,4 @@ const LoginForm = () =>{
     )
 }
 
-export default LoginForm;
+export {SigninForm}
