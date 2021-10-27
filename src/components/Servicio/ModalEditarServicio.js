@@ -1,7 +1,8 @@
 import React from "react";
 import { Row, Col, Modal,Container, Button,Form} from "react-bootstrap";
 
-const ModalServicio = (props) => {
+
+const ModalEditarServicio = (props) => {
     return(
         
             <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
@@ -90,8 +91,4 @@ const ModalServicio = (props) => {
 
     }
 
-    export default ModalServicio;
-
-
-
-   
+    export default ModalEditarServicio;

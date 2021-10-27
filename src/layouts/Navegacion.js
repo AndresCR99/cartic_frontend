@@ -19,16 +19,10 @@ function Navegacion() {
                     <Nav className="me-auto">
                         {conectado && 
                         <React.Fragment>
-                            <NavDropdown title={<span className="text-yellow">Registro</span>} id="basic-nav-dropdown"  className="text-yellow">
-                            <NavDropdown.Item as={NavLink} to={'/RegistroCliente'}  className="text-yellow">Cliente</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to={'/RegistroVehiculo'}  className="text-yellow">Vehiculo</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to={'/'}  className="text-yellow">Servicio</NavDropdown.Item>
-                            </NavDropdown>
-                            <NavDropdown title={<span className="text-yellow">Historicos</span>} id="basic-nav-dropdown"  className="text-yellow">
-                            <NavDropdown.Item href="#action/3.1"  className="text-yellow">Vehiculo</NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to={'/tecnico'}  className="text-yellow">Tecnico</NavDropdown.Item>
-                                          
-                            </NavDropdown>
+                            
+                            <Nav.Link as={NavLink} to={'/'} className="text-yellow"></Nav.Link>
+                            
+                            
                         </React.Fragment>
                         }                        
                     </Nav>
