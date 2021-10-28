@@ -1,49 +1,17 @@
 import React from "react";
+import {  Card } from "react-bootstrap";
+import { FaEdit,FaTrashAlt } from 'react-icons/fa';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Table,
-  Button,
-  Container,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  FormGroup,
-  ModalFooter,
-} from "reactstrap";
+import { Table,  Button,  Container,  Modal,  ModalHeader,  ModalBody,  FormGroup,  ModalFooter} from "reactstrap";
+import { ORDEN_ENDPOINT} from "../connection/helpers/endpoints";
+import axios from 'axios';
 
-const data = [
-  { id: 2,
-    fecha: "2021-10-28",
-    nombreServicio: "secado",
-    descripcionServicio: "servicio de secado con alto costo",
-    placaVehiculo: "HQX482",
-    nombreCliente: "luis paternostro",
-    nombreTecnico: "ellen calcio",
-    valorServicio: "500000.0" },
-  { 
-    id: 2,
-    fecha: "2021-10-28",
-  nombreServicio: "secado",
-  descripcionServicio: "servicio de secado con alto costo",
-  placaVehiculo: "HQX482",
-  nombreCliente: "luis paternostro",
-  nombreTecnico: "ellen calcio",
-  valorServicio: "500000.0" },
-  { id: 2,
-    fecha: "2021-10-28",
-  nombreServicio: "secado",
-  descripcionServicio: "servicio de secado con alto costo",
-  placaVehiculo: "HQX482",
-  nombreCliente: "luis paternostro",
-  nombreTecnico: "ellen calcio",
-  valorServicio: "500000.0" },
-  
-];
+
 
 class App extends React.Component {
  
   state = {
-    data: data,
+    data: [],
     modalActualizar: false,
     modalInsertar: false,
     form: {
@@ -57,6 +25,40 @@ class App extends React.Component {
   valorServicio: "",
     },
   };
+
+peticionesGet(){
+axios.get(ORDEN_ENDPOINT).then(response => {this.setState({data:response.data})})
+
+}
+
+peticionesPost=async()=>{
+  delete this.state.form.id;
+axios.post(ORDEN_ENDPOINT, this.state.form).then(response=>{
+  this.modalInsertar();
+  this.peticionesGet();
+  }).catch(error=>{console.log(error)})
+  this.setState({ modalInsertar: false})
+
+}
+
+seleccionarOrden=(orden)=>{
+this.state({ 
+  form: {
+    id:orden.id,
+  fecha:orden.fecha,
+nombreServicio:orden.nombreServicio,
+descripcionServicio:orden.descripcionServicio,
+placaVehiculo: orden.placaVehiculo,
+nombreCliente: orden.nombreCliente,
+nombreTecnico: orden.nombreTecnico,
+valorServicio: orden.valorServicio,
+  },
+
+})
+
+}
+
+  componentDidMount(){this.peticionesGet();}
 
   mostrarModalActualizar = (dato) => {
     this.setState({
@@ -84,8 +86,16 @@ class App extends React.Component {
     var arreglo = this.state.data;
     arreglo.map((registro) => {
       if (dato.id == registro.id) {
-        arreglo[contador].personaje = dato.personaje;
-        arreglo[contador].anime = dato.anime;
+        arreglo[contador].fecha = dato.fecha;
+        arreglo[contador].placaVehiculo = dato.placaVehiculo;
+        arreglo[contador].nombreCliente = dato.nombreCliente;
+        arreglo[contador].nombreTecnico = dato.nombreTecnico;
+        arreglo[contador].nombreServicio = dato.nombreServicio;
+        arreglo[contador].descripcionServicio = dato.descripcionServicio;
+        arreglo[contador].valorServicio = dato.valorServicio;
+        
+        
+        
       }
       contador++;
     });
@@ -115,22 +125,29 @@ class App extends React.Component {
     this.setState({ modalInsertar: false, data: lista });
   }
 
-  handleChange = (e) => {
-    this.setState({
+  handleChange = async e => {
+    e.persist();
+    await this.setState({
       form: {
         ...this.state.form,
         [e.target.name]: e.target.value,
       },
     });
+    console.log(this.state.form);
   };
 
   render() {
-    
+    const {form} = this.state;
     return (
+      
       <>
+      <Card className="shadow mt-5 mb-5">
+                        <Card.Header className="text-center text-yellow bg-blue">
+                            <h2>Registro Orden de Trabajo</h2> 
+                        </Card.Header>
         <Container>
         <br />
-          <Button className="bg-blue text-yellow" onClick={()=>this.mostrarModalInsertar()}>Crear</Button>
+          <Button className="bg-blue text-yellow" onClick={()=>this.mostrarModalInsertar()}>Nueva Orden de Trabajo</Button>
           <br />
           <br />
           <Table>
@@ -160,15 +177,16 @@ class App extends React.Component {
                   <td>{dato.nombreTecnico}</td>
                   <td>{dato.nombreServicio}</td>
                   <td>{dato.descripcionServicio}</td>
-                  <td>{dato.valorServicio}</td>
+                  <td>{new Intl.NumberFormat("en-EN").format(dato.valorServicio)}</td>
                   <td>
                     <Button
-                      className="bg-blue text-yellow"
+                      className="bg-yellow text-blue"
                       onClick={() => this.mostrarModalActualizar(dato)}
                     >
-                      Editar
+                      <FaEdit />
+
                     </Button>{" "}
-                    <Button className="bg-blue text-yellow" onClick={()=> this.eliminar(dato)}>Eliminar</Button>
+                    <Button className="bg-blue text-yellow" onClick={()=> this.eliminar(dato)}><FaTrashAlt /></Button>
                   </td>
                 </tr>
               ))}
@@ -177,7 +195,7 @@ class App extends React.Component {
         </Container>
 
         <Modal isOpen={this.state.modalActualizar}>
-          <ModalHeader>
+          <ModalHeader className="text-yellow bg-blue">
            <div><h3>Editar Registro</h3></div>
           </ModalHeader>
 
@@ -292,13 +310,13 @@ class App extends React.Component {
 
           <ModalFooter>
             <Button
-              color="primary"
+              className="bg-yellow text-blue"
               onClick={() => this.editar(this.state.form)}
             >
               Editar
             </Button>
             <Button
-              color="danger"
+              className="bg-blue text-yellow"
               onClick={() => this.cerrarModalActualizar()}
             >
               Cancelar
@@ -336,6 +354,7 @@ class App extends React.Component {
                 name="fecha"
                 type="date"
                 onChange={this.handleChange}
+                value={form.fecha}
               />
             </FormGroup>
             
@@ -348,6 +367,7 @@ class App extends React.Component {
                 name="nombreServicio"
                 type="text"
                 onChange={this.handleChange}
+                value={form.nombreServicio}
               />
             </FormGroup>
             <FormGroup>
@@ -359,6 +379,7 @@ class App extends React.Component {
                 name="descripcionServicio"
                 type="text"
                 onChange={this.handleChange}
+                value={form.descripcionServicio}
               />
             </FormGroup>
             <FormGroup>
@@ -370,6 +391,7 @@ class App extends React.Component {
                 name="placaVehiculo"
                 type="text"
                 onChange={this.handleChange}
+                value={form.placaVehiculo}
               />
             </FormGroup>
             <FormGroup>
@@ -381,6 +403,7 @@ class App extends React.Component {
                 name="nombreCliente"
                 type="text"
                 onChange={this.handleChange}
+                value={form.nombreCliente}
               />
             </FormGroup>
 
@@ -393,6 +416,7 @@ class App extends React.Component {
                 name="nombreTecnico"
                 type="text"
                 onChange={this.handleChange}
+                value={form.nombreTecnico}
               />
             </FormGroup>
 
@@ -405,6 +429,7 @@ class App extends React.Component {
                 name="valorServicio"
                 type="text"
                 onChange={this.handleChange}
+                value={form.valorServicio}
               />
             </FormGroup>
 
@@ -412,19 +437,20 @@ class App extends React.Component {
 
           <ModalFooter>
             <Button
-              color="primary"
-              onClick={() => this.insertar()}
+              className="bg-yellow text-blue"
+              onClick={() => this.peticionesPost()}
             >
               Insertar
             </Button>
             <Button
-              className="btn btn-danger"
+              className="bg-blue text-yellow"
               onClick={() => this.cerrarModalInsertar()}
             >
               Cancelar
             </Button>
           </ModalFooter>
         </Modal>
+        </Card>
       </>
     );
   }

@@ -19,5 +19,5 @@
 const API_URL="http://localhost:8080/api"
 export const LOGIN_ENDPOINT = API_URL + "/usuarios/login"
 export const REGISTRO_ENDPOINT= API_URL + "/usuarios";
-export const ORDEN_ENDPOINT= API_URL + "/ordenes";
+export const ORDEN_ENDPOINT= API_URL + "/ordenes_servicios";
 export const VEHICULO_ENDPOINT= API_URL + "/vehiculos";
