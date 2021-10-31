@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "../components/styles/App.css";
 import Tecnico from "../pages/Tecnico";
 import E404 from "../pages/errors/E404";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import RegistroCli from "../pages/RegistroCli";
 import Servicio from "../pages/Servicio";
