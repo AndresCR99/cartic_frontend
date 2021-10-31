@@ -44,7 +44,6 @@ function Signup() {
             return;
         }
 
-        console.log({userName, password, nombre, correo})
         dispatch(registroUsuario({userName, password, nombre, correo}))
         .then(response=> {
             dispatch(loginUsuario({userName, password}));
