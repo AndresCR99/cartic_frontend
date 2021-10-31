@@ -60,9 +60,15 @@ const OrdenServicio = () => {
 
       if (tipoModal==='create'){
 
-        let lastItem = servicios[servicios.length - 1]
-        let idOrden = lastItem.id + 1
-        setServicio({['id']: idOrden})
+        if(servicios.length< 1){
+          setServicio({['id']: 0})
+        }else{
+
+          let lastItem = servicios[servicios.length - 1]
+          let idOrden = lastItem.id + 1
+          setServicio({['id']: idOrden})
+        }
+
 
       } else if (tipoModal==='update'){
         setServicio({...servicio})

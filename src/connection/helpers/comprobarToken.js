@@ -2,9 +2,13 @@ import { cerrarSesion, setUsuarioActual } from "./autenticacionAcciones";
 import { store } from "../../store";
 import { setAutenticacionToken } from "./setAutenticacionToken";
 import jwt_decode from "jwt-decode";
+import Cookies from 'js-cookie';
 
 const comprobarToken=()=>{
-    if(localStorage.jwtToken){
+
+    let token = Cookies.get("jwtToken", null)
+
+    if(token){
         setAutenticacionToken(localStorage.jwtToken);
         const decodificado = jwt_decode(localStorage.jwtToken);
 
@@ -19,6 +23,10 @@ const comprobarToken=()=>{
             store.dispatch(cerrarSesion());
             window.location.href="/login"
         }
+    }else if(window.location.href === "/" && token === null){
+
+        store.dispatch(cerrarSesion());
+        window.location.href="/login"
     }
 }
 

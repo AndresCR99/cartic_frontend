@@ -37,6 +37,9 @@ export const setUsuarioActual= ({usuario, conectado})=> {
 export const cerrarSesion = () => dispatch =>{
     localStorage.removeItem('jwtToken');
     setAutenticacionToken(false);
+    if (Cookies.get('jwtToken', null)){
+        Cookies.remove('jwtToken');
+    }
 
     dispatch(setUsuarioActual({
         usuario:{},
