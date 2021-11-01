@@ -61,22 +61,14 @@ const OrdenServicio = () => {
 
 
         if(servicios.length< 1){
-<<<<<<< HEAD
           servicio['id']=0
           setServicio(servicio)
-=======
-          setServicio({'id': 0})
->>>>>>> 934d62a5f0183a063baf4126f43b50d9cd2f4af4
         }else{
 
           let lastItem = servicios[servicios.length - 1]
           let idOrden = lastItem.id + 1
-<<<<<<< HEAD
           servicio['id']= idOrden
           setServicio(servicio)
-=======
-          setServicio({'id': idOrden})
->>>>>>> 934d62a5f0183a063baf4126f43b50d9cd2f4af4
         }
 
 
