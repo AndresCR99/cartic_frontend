@@ -1,51 +1,164 @@
 import React from "react";
-import { Row, Col, Modal,Container, Button,Form} from "react-bootstrap";
+import { Modal, Button,  FormGroup} from "react-bootstrap";
 
-const ModalServicio = (props) => {
+const ModalServicio = (
+  {
+    showModal,
+    handleShow,
+    servicio,
+    setServicio,
+    handleSubmit,
+    typeModal
+  }) => {
+
+  const handleChange = e => {
+    setServicio({
+      ...servicio,
+      [e.target.name]: e.target.value
+    })
+
+  }
+
+  let {
+    id,
+    fecha,
+    nombreServicio,
+    descripcionServicio,
+    placaVehiculo,
+    nombreCliente,
+    nombreTecnico,
+    valorServicio,
+  } = servicio
+
     return(
+      <Modal show={showModal}>
+      <Modal.Header className="text-yellow bg-blue">
+       <div><h3>{typeModal === 'create' ? "Crear": "Editar"} Registro</h3></div>
+      </Modal.Header>
+
+      <Modal.Body>    
+          <FormGroup>
+            <label>
+            Id Orden:
+            </label>
+            <input
+              className="form-control"
+              readOnly
+              type="text"
+              onChange={handleChange}
+              value={id}
+            />
+          </FormGroup>
+        <FormGroup>
+          <label>
+            Fecha: 
+          </label>
+          <input
+            className="form-control"
+            name="fecha"
+            type="date"
+            onChange={handleChange}
+            value={fecha || ""}
+          />
+        </FormGroup>
         
-            <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
-              <Modal.Header   className="bg-blue text-yellow">
-              
-                <Modal.Title id="contained-modal-title-vcenter">
-                  Anexar Servicio
-                </Modal.Title>
-                <Button className="bg-blue text-yellow" onClick={props.onHide}>X</Button>
-              </Modal.Header>
-              <Modal.Body className="show-grid">
-                <Container>
-                  <Row>
-                    <Col xs={6} md={4}>
-                    <Form.Label>Id Servicio</Form.Label>
-                        <Form.Control type="text"/>
-                    </Col>
-                    <Col xs={12} md={8}>
-                    <Form.Label>Descripción</Form.Label>
-                        <Form.Control type="text"/>
-                    </Col>
-                  </Row>
-        
-                  <Row>
-                    <Col xs={6} md={4}>
-                    <Form.Label>Valor Unitario</Form.Label>
-                        <Form.Control type="text"/>
-                    </Col>
-                    <Col xs={6} md={4}>
-                    <Form.Label>Cantidad</Form.Label>
-                        <Form.Control type="number"/>
-                    </Col>
-                    <Col xs={6} md={4}>
-                    <Form.Label>Valor Total</Form.Label>
-                        <Form.Control type="number"/>
-                    </Col>
-                  </Row>
-                </Container>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button className="bg-blue text-yellow">Guardar</Button>
-              </Modal.Footer>
-            </Modal>
-          );
+        <FormGroup>
+          <label>
+            Servicio: 
+          </label>
+          <input
+            className="form-control"
+            name="nombreServicio"
+            type="text"
+            onChange={handleChange}
+            value={nombreServicio || ""}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <label>
+            Descripción Servicio:
+          </label>
+          <input
+            className="form-control"
+            name="descripcionServicio"
+            type="text"
+            onChange={handleChange}
+            value={descripcionServicio || ""}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <label>
+            Placa:
+          </label>
+          <input
+            className="form-control"
+            name="placaVehiculo"
+            type="text"
+            onChange={handleChange}
+             value={placaVehiculo || ""}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <label>
+            Nombre Cliente:
+          </label>
+          <input
+            className="form-control"
+            name="nombreCliente"
+            type="text"
+            onChange={handleChange}
+             value={nombreCliente || ""}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <label>
+            Nombre Técnico:
+          </label>
+          <input
+            className="form-control"
+            name="nombreTecnico"
+            type="text"
+            onChange={handleChange}
+             value={nombreTecnico || ""}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <label>
+            Valor:
+          </label>
+          <input
+            className="form-control"
+            name="valorServicio"
+            type="text"
+            onChange={handleChange}
+             value={valorServicio || ""}
+          />
+        </FormGroup>
+
+
+
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button
+          className="bg-yellow text-blue"
+          onClick={handleSubmit}
+          >
+          {typeModal === 'create' ? "Crear": "Editar"}
+        </Button>
+        <Button
+          className="bg-blue text-yellow"
+          onClick={handleShow}
+          >
+          Cancelar
+        </Button>
+      </Modal.Footer>
+    </Modal>);
         
         
         

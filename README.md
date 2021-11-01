@@ -1,25 +1,20 @@
-### `yarn start`
+# **Proyecto Cartic Frontend**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000)
-### `yarn build`
+## **Integrantes**
 
-holaaa cualquier cosa 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+C3_G41_Grupo2
+Carlos Andres Castaño ////  carlos.castano@o365.unab.edu.co
+Paulo Rodriguez /// paulo.rodriguez@o365.unab.edu.co
+David Santiago Pachón //// david.pachon@o365.unab.edu.co
+Jose Luis Noguera Ariza ////   jose.noguera@o365.unab.edu.co
+Angie Alejandra Garcia ////  angie.garcia@o365.unab.edu.co
+## **Comandos**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### **Instalar paquetes**
+`yarn install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### **Correr App**
+`yarn start`
 
-### `yarn eject`
+AWS S3:  http://cartic.s3-website-us-east-1.amazonaws.com
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-asdfasfsdfggds
