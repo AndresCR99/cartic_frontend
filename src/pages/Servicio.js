@@ -1,8 +1,7 @@
 import React, {Fragment, useEffect, useState } from "react";
 import {  Card } from "react-bootstrap";
-import { FaEdit,FaTrashAlt } from 'react-icons/fa';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Table,  Button,  Container} from "reactstrap";
+import { Button,  Container} from "reactstrap";
 import { ORDEN_ENDPOINT } from "../connection/helpers/endpoints";
 import Cookies from 'js-cookie';
 import TablaServicio from "../components/Servicio/TablaServicio";
@@ -60,6 +59,7 @@ const OrdenServicio = () => {
 
       if (tipoModal==='create'){
 
+
         if(servicios.length< 1){
           servicio["id"] = 0;
           setServicio(servicio)
@@ -67,7 +67,6 @@ const OrdenServicio = () => {
 
           let lastItem = servicios[servicios.length - 1]
           let idOrden = lastItem.id + 1
-          console.log(idOrden)
           servicio["id"] = idOrden;
           setServicio(servicio)
         }
@@ -101,9 +100,9 @@ const OrdenServicio = () => {
       placaVehiculo,
       nombreCliente,
       nombreTecnico,
-      valorServicio = parseFloat(valorServicio),
+      valorServicio,
     } = servicio
-
+    valorServicio = parseFloat(valorServicio)
     if (
       id === '' ||
       fecha === '' ||

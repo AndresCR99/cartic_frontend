@@ -37,7 +37,7 @@ function Signin() {
             return;
         }
 
-        console.log({userName, password})
+
         dispatch(loginUsuario({userName, password}))
         .then(response=>{
 

@@ -1,0 +1,35 @@
+image: node:latest
+
+variables:
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+  - node_modules/
+
+  
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  dependencies:
+    - build
+  script:
+    - aws s3 cp --recursive ./build s3://$AWS_S3_BUCKET

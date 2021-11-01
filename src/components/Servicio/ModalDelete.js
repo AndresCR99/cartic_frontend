@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button,  FormGroup} from "react-bootstrap";
+import { Modal, Button} from "react-bootstrap";
 
 const ModalDelete = (
     {
